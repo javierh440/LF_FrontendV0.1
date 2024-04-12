@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from '../shared/header/header.component';
-import { SidebarComponent } from '../shared/sidebar/sidebar.component';
-import { BreadcrumbsComponent } from '../shared/breadcrumbs/breadcrumbs.component';
+import { HeaderComponent } from '@shared/header/header.component';
+import { SidebarComponent } from '@shared/sidebar/sidebar.component';
+import { BreadcrumbsComponent } from '@shared/breadcrumbs/breadcrumbs.component';
+import { Component, OnInit } from '@angular/core';
+
+declare function customInitFunction(): any;
 
 @Component({
   selector: 'app-pages',
@@ -17,4 +20,12 @@ import { BreadcrumbsComponent } from '../shared/breadcrumbs/breadcrumbs.componen
   styles: ` `,
 
 })
-export default class PagesComponent { }
+export default class PagesComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void{
+    customInitFunction();
+  }
+
+ }

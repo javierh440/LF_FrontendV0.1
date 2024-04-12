@@ -8,11 +8,14 @@ export const routes: Routes = [
             {
                 path: 'dashboard',
                 title: 'Dashboard',
+                data: {titulo: 'Dashboard'},
                 loadComponent: () => import('./pages/dashboard/dashboard.component')
             },
             {
                 path: 'contribuyente',
                 title: 'Contribuyente',
+                data:{
+                    titulo: 'Contribuyente'},
                 loadComponent: () => import('./pages/contribuyente/contribuyente.component')
             },
             {
