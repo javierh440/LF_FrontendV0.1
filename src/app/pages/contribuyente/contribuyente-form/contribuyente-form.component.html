@@ -1,0 +1,118 @@
+<div class="card">
+    <div class="card-body">              
+        <form ngNativeValidate [formGroup]="form" class="form p-t-10" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="exampleInputuname">Nombres</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingresa nombres"
+                            required
+                            formControlName="nombres"
+                            [class.is-invalid]="nombresNoValido">                               
+                                          
+                        </div>
+                        <small *ngIf="nombresNoValido" class="text-danger">Campo requerido</small> 
+                       
+                    </div>
+                    <div class="col-6">
+                        <label for="exampleInputuname">Apellidos</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingresa apellidos"
+                            required
+                            formControlName="apellidos">
+                        </div>
+                        <small *ngIf="apellidosNoValido" class="text-danger">Campo requerido</small>
+                    </div>
+                </div>               
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="exampleInputuname">Tipo Persona</label>
+                        <select class="form-control custom-select" formControlName="tipoContribuyente">
+                            <option value="">Selecciona Tipo de Persona</option>
+                            @for (contribuyente of tipoContribuyente; track $index) {
+                                <option [value]="contribuyente">{{contribuyente}}</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <label for="exampleInputuname">Tipo Documento</label>
+                        <select class="form-control custom-select" formControlName="tipoDocumento">
+                            <option value="">Selecciona Tipo de Documento</option>
+                            @for (documento of tipoDocumento; track $index) {
+                                <option [value]="documento">{{documento}}</option>
+                            }
+                            
+                        </select>
+                    </div>
+                </div>
+               
+            </div>
+
+            <div class="form-group">
+               <div class="row">
+                     <div class="col-6">
+                          <label for="exampleInputuname">Numero Documento</label>
+                          <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-id-badge"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Número de documento"
+                            required
+                            formControlName ="numeroDocumento">
+                          </div>
+                          <small *ngIf="numeroDocumentoNoValido" class="text-danger">Campo requerido</small>
+                     </div>
+                     <div class="col-6">
+                          <label for="exampleInputuname">Razon Social</label>
+                          <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Razon Social"
+                            formControlName="razonSocial">
+                          </div>
+                     </div>
+               </div>
+            </div>
+            <div class="form-group">
+               <div class="row">
+                        <div class="col-6">
+                            <label for="exampleInputuname">Correo</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-email"></i></div>
+                                <input type="text" class="form-control" id="exampleInputuname" placeholder="Correo electronico"
+                                formControlName="correo">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="exampleInputuname">Teléfono</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-home"></i></div>
+                                <input type="text" class="form-control" id="exampleInputuname" placeholder="Telefono"
+                                formControlName="telefono">
+                            </div>
+                        </div>
+               </div>
+            </div>
+
+            <div class="form-grup">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="exampleInputuname">Dirección</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-home"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Dirección"
+                            formControlName="direccion">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+         
+            <button type="submit" class="btn btn-success waves-effect waves-light m-r-10 m-t-20">Guardar</button>
+            <button type="submit" class="btn btn-inverse waves-effect waves-light m-t-20">Cancelar</button>
+        </form>
+    </div>
+</div>

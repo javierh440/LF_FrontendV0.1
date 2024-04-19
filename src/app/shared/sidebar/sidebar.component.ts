@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { routes } from '../../app.routes';
-import { SidebarService } from '../../services/sidebar.service';
+import { SidebarService } from '@services/sidebar.service';
 import { RouterModule } from '@angular/router';
 
 
@@ -14,14 +14,17 @@ import { RouterModule } from '@angular/router';
 export class SidebarComponent {
 
   public menuItems = routes
-    .map(route => route.children ??[])
+    .map(route => route.children ?? [])
     .flat()
     .filter(route => route && route.path)
-    .filter(route => !route.path?.includes(':') )
+    .filter(route => !route.path?.includes(':') );
 
-  constructor( private sidebarService: SidebarService) {
+
+  
+  constructor() {
     
   }
 
+  
 
 }

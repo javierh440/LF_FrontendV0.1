@@ -19,6 +19,10 @@ export const routes: Routes = [
                 loadComponent: () => import('./pages/contribuyente/contribuyente.component')
             },
             {
+                path:'contribuyente/form',
+                loadComponent: () => import('./pages/contribuyente/contribuyente-form/contribuyente-form.component'),
+                data:{titulo:'Formulario de Contribuyente'}},
+            {
                 path: '', redirectTo: 'dashboard', pathMatch: 'full'
             },
             
