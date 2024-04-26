@@ -59,7 +59,7 @@
                           <label for="exampleInputuname">Numero Documento</label>
                           <div class="input-group">
                             <div class="input-group-addon"><i class="ti-id-badge"></i></div>
-                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Número de documento"
+                            <input type="number" class="form-control" id="exampleInputuname" placeholder="Número de documento"
                             required
                             formControlName ="numeroDocumento">
                           </div>
@@ -108,11 +108,18 @@
                     </div>
                     
                 </div>
-            </div>
-            
+            </div>            
          
-            <button type="submit" class="btn btn-success waves-effect waves-light m-r-10 m-t-20">Guardar</button>
-            <button type="submit" class="btn btn-inverse waves-effect waves-light m-t-20">Cancelar</button>
+            
+            @if(isEditMode) {
+                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10 m-t-20" >Actualizar</button>
+                <button type="button" class="btn btn-outline-danger waves-light  m-r-10 m-t-20" [routerLink]="['/contribuyente']">Regresar</button>
+            }@else {
+                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10 m-t-20" >Registrar</button>
+                <button type="button" class="btn btn-outline-danger waves-light  m-r-10 m-t-20"  (click)="form.reset()"><i class="fa fa-window-close"></i> Cancelar</button>
+            }
+            
         </form>
     </div>
+
 </div>

@@ -18,11 +18,11 @@
                 <li> <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="fa fa-home" aria-hidden="true"></i>
                     <span class="hide-menu">L. Funcionamiento </span></a>
                     <ul aria-expanded="false" class="collapse">
-
+                   
                         @for(item of menuItems; track $index){
                             <li><a routerLinkActive="active" [routerLink]="item.path">{{item.title}}</a></li>                            
                         }
-
+                    
                       
                     </ul>
                 </li>

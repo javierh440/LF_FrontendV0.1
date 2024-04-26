@@ -17,8 +17,8 @@ export class ContribuyenteService {
 
     constructor(private http: HttpClient) { }
 
-    getAllContribuyentes(): Observable<Contribuyente[]> {
-        return this.http.get<Contribuyente[]>(this.apiUrl);
+    getAllContribuyentes() {
+        return this.http.get(this.apiUrl);
     }
 
     getContribuyentesPage(page: string,size:string): Observable<any> { 

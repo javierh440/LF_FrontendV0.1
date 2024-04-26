@@ -1,48 +1,31 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   standalone: true,
-  selector: 'paginator-nav',
+  selector: 'app-paginator',
+  imports: [
+    PaginatorComponent,
+    MatPaginatorModule,
+  ],
   templateUrl: './paginator.component.html'
 })
 
-export class PaginatorComponent implements OnInit, OnChanges {
+export class PaginatorComponent {
 
-  @Input()
-  paginador: any;
-  @Input()
-  ingreso: string="";
+  @Input() totalRegistros = 0;
+  @Input() totalPorPagina = 10;
+  @Input() paginaActual = 0;
+  @Input() pageSizeOptions: number[] = [];
 
-  paginas: number[]=[];
-  desde: number=0;
-  hasta: number=0;
+  @Output() pageEvent  = new EventEmitter<PageEvent>();
+ 
 
   constructor() { }
 
-  ngOnInit(): void {
-    //inicializar el paginator
-    this.initPaginator();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    let paginadorActualizado = changes['paginador'];
-    if(paginadorActualizado.previousValue){
-      this.initPaginator();
-    }
+  handlePageEvent(event: PageEvent) {
+    this.pageEvent.emit(event);
   }
 
 
-  private initPaginator(): void {
-    //  console.log(this.paginador);
-    this.desde = Math.min(Math.max(1, this.paginador.number - 10), this.paginador.totalPages - 11);
-    this.hasta = Math.max(Math.min(this.paginador.totalPages, this.paginador.number +10), 12);
-   
-    
-    if(this.paginador.totalPages> 11){
-      this.paginas = new Array(this.hasta - this.desde +1).fill(0).map( (_valor, indice) => indice + this.desde);
-      
-    }else{
-      this.paginas = new Array(this.paginador.totalPages).fill(0).map( (_valor, indice)=> indice+1);
-    }
-  }
 }

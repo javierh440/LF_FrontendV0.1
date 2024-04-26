@@ -1,0 +1,90 @@
+
+<div class="row fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-right">
+                    
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                        Nuevo Giro
+                    </button>
+                </div>
+                <div class="table-responsive m-t-40">
+                    <div id="example23_wrapper" class="dataTables_wrapper">
+                        <div id="example23_filter" class="dataTables_filter">
+                            <label>Buscar:<input type="search" class="" (keyup)="Filterchange($event)" placeholder="" aria-controls="example23"></label>
+                        </div>
+                        <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                            <ng-container matColumnDef="id">
+                                <th mat-sort-header mat-header-cell *matHeaderCellDef> N°</th>
+                                <td mat-cell *matCellDef="let element">{{element.id}}</td>
+                            </ng-container>
+                            <ng-container matColumnDef="nombre">
+                                <th mat-sort-header mat-header-cell *matHeaderCellDef> Nombre</th>
+                                <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+                            </ng-container>
+                            <ng-container matColumnDef="rubroNegocio">
+                                <th mat-sort-header mat-header-cell *matHeaderCellDef> Rubro de Negocio</th>
+                                <td mat-cell *matCellDef="let element">{{element.rubroNegocioNombre}}</td>
+                            </ng-container>
+                            <ng-container matColumnDef="action">
+                                <th mat-header-cell *matHeaderCellDef> Action</th>
+                                <td mat-cell *matCellDef="let element">
+                                    <a  type="button" class="btn fa fa-pencil" data-toggle="tooltip" title="Editar" data-original-title="Editar" (click)="cargarGiro(element.id)" data-toggle="modal" data-target="#myModal"></a> ||
+                                    <a class="btn fa fa-file-pdf-o" style="color:red" data-toggle="tooltip" title="Ver Detalle" data-original-title="Ver acta"></a> ||
+                                    <a type="button" class="btn fa fa-trash" style="color:red" data-toggle="tooltip" title="Eliminar" data-original-title="Delete"></a>
+                                </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+                        </table>
+                        <app-paginator [totalRegistros]="totalRegistros"
+                                    [totalPorPagina]="totalPorPagina"
+                                    [paginaActual]="paginaActual"
+                                    [pageSizeOptions]="pageSizeOptions"
+                                    (pageEvent)="handlePageEvent($event)"
+                                    >
+                        </app-paginator>
+                    </div>
+                </div>
+        </div>
+    </div> 
+
+</div>
+
+
+<!-- ----------------------------------------- Modal----------------------------------------------------------- -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modal-primary-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-primary-label">Nuevo Giro de Negocio</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="form-horizontal" [formGroup]="formGiro" (ngSubmit)="guardarGiro()" >
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="recipient-name" class="control-label">Nombre:</label>
+                    <input type="text" class="form-control" id="recipient-name"
+                    formControlName="nombre">
+                </div>
+                <div class="form-group">                    
+                    <select class="form-control custom-select" formControlName="rubroNegocioId">
+                        <option value="">Selecciona Rubro de Negocio</option >
+                        @for (rubro of rubroNegocios; track $index) {
+                            <option [value]="rubro.id">{{rubro.nombre}}</option>
+                        }
+                        
+                    </select>
+                </div>            
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </div>
+            </form>           
+        </div>
+    </div>
+</div> 

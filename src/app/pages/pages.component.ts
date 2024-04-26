@@ -4,6 +4,7 @@ import { HeaderComponent } from '@shared/header/header.component';
 import { SidebarComponent } from '@shared/sidebar/sidebar.component';
 import { BreadcrumbsComponent } from '@shared/breadcrumbs/breadcrumbs.component';
 import { Component, OnInit } from '@angular/core';
+import { pagesRoutes } from './pages.routes';
 
 declare function customInitFunction(): any;
 
@@ -14,7 +15,7 @@ declare function customInitFunction(): any;
     RouterModule,
     HeaderComponent,
     SidebarComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,    
   ],
   templateUrl: './pages.component.html',
   styles: ` `,

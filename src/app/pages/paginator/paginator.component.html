@@ -1,41 +1,4 @@
-<div class="dataTables_paginate paging_simple_numbers" id="example23_paginate">
-    <a  paginate_button previousclass="paginate_button previous " aria-controls="example23" data-dt-idx="0" tabindex="0"
-        id="example23_previous">Primero</a>
+<mat-paginator [length]="totalRegistros" [pageSize]="totalPorPagina" [pageIndex]="paginaActual"
+    [pageSizeOptions]="pageSizeOptions" (page)="handlePageEvent($event)" showFirstLastButtons>
 
-        <span>
-            <a class="paginate_button current" aria-controls="example23" data-dt-idx="1" tabindex="0">1</a>
-            <a class="paginate_button " aria-controls="example23" data-dt-idx="2" tabindex="0">2</a>
-            <a class="paginate_button " aria-controls="example23" data-dt-idx="3" tabindex="0">3</a>
-            <a class="paginate_button " aria-controls="example23" data-dt-idx="4" tabindex="0">4</a>
-            <a class="paginate_button " aria-controls="example23" data-dt-idx="5" tabindex="0">5</a>
-            <a class="paginate_button " aria-controls="example23" data-dt-idx="6" tabindex="0">6</a></span>
-
-            <a class="paginate_button next" aria-controls="example23" data-dt-idx="7" tabindex="0" id="example23_next">Next</a>
-</div>
-
-<!--
-<ul *ngIf="paginas?.length >0" class="pagination">
-
-    <li class="page-item" *ngIf="paginador.number > 0">
-       <a class="page-link" [routerLink]="['/'+ingreso+'/page', paginador.number-1]">&laquo;</a>
-    </li>
-
-    <li [ngClass]="paginador.first? 'disabled page-item': 'page-item'">
-        <a class="page-link" [routerLink]="['/'+ingreso+'/page', 0]">Primera</a>
-    </li>
-
-    <li *ngFor="let pagina of paginas" [ngClass]="pagina-1 == paginador.number? 'page-item active':'page-item'">
-        <span class="page-link" *ngIf="pagina-1 == paginador.number">{{pagina}}</span>
-        <a *ngIf="pagina-1 != paginador.number" class="page-link" [routerLink]="['/'+ingreso+'/page', pagina-1]">{{pagina}}</a>
-    </li>
-
-    <li [ngClass]="paginador.last?' disabled page-item': 'page-item'">
-        <a class="page-link" [routerLink]="['/'+ingreso+'/page', paginador.totalPages-1]">Última</a>
-    </li>
-
-    <li class="page-item" *ngIf="paginador.number < paginador.totalPages-1">
-        <a class="page-link" [routerLink]="['/'+ingreso+'/page', paginador.number+1]">&raquo;</a>
-    </li>
-</ul>
-
--->
+</mat-paginator>

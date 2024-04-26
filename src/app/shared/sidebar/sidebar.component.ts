@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { routes } from '../../app.routes';
-import { SidebarService } from '@services/sidebar.service';
 import { RouterModule } from '@angular/router';
+import pagesRoutes from '../../pages/pages.routes';
 
 
 @Component({
@@ -13,7 +12,7 @@ import { RouterModule } from '@angular/router';
 })
 export class SidebarComponent {
 
-  public menuItems = routes
+  public menuItems = pagesRoutes
     .map(route => route.children ?? [])
     .flat()
     .filter(route => route && route.path)
